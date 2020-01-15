@@ -1,0 +1,22 @@
+name: Run Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.14.1
+      - run: yarn install
+      - name: Run Lint
+        uses: ./.github/actions/lint
+      - name: Run Tests
+        uses: ./.github/actions/jest
+      - name: Run Lint + Tests
+        uses: ./.github/actions/test

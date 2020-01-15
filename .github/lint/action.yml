@@ -1,0 +1,5 @@
+name: "Lint"
+description: "Run Lint"
+runs:
+  using: "node12"
+  main: "action.js"
